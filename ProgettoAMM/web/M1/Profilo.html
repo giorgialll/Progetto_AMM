@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>NerdBook - Profilo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Giorgia Lallai">
+        <meta name="keywords" content="Profilo iscrizione gratis NerdBook gratutio cerca  amore nerd social amicizie amici ">
+        
+    </head>
+    <body>
+        <div id="title">
+            <h1>NerdBook - Profilo</h1>
+        </div>
+        
+         <div id="Indice">          
+                       
+            <ul>
+                <li><a href="Descrizione.html">Nerd Book - Welcome</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+       
+        </div>
+        
+        <div id="profileDataForm">
+            <h2>Registrazione</h2>
+            <form action="servlet.java" method="post"  > <!-- cosa va messo nel campo action?-->
+                <label for="name">Nome: </label>
+                <input type="text" id="name" name="name" >
+                
+                <label for="cognome">Cognome: </label>
+                <input type="text" id="cognome" name="cognome" >
+                
+                <label for="URL">URL: </label>
+                <input type="url" id="URL" name="URL">
+                
+                <label for="textArea"> Inserire una frase di presentazione</label>
+                <textarea name="textPresentation" id="textArea"  ></textarea><br>
+                
+                <label for="dataNascita">Inserire la data di nascita: </label>
+                <input type="date" id="dataNascita" name="dataNascita"><br>
+                
+                <label for="pswd">Password: </label>
+                <input type="password" id="pswd" name="pswd">
+                
+                <label for="cpswd">Conferma password: </label>
+                <input type="password" id="cpswd" name="cpswd"><br>
+             
+                <button type="submit">REGISTRATI</button>
+            </form>
+             
+        </div>
+        
+    </body>
+</html>
