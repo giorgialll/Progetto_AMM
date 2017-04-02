@@ -1,17 +1,31 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 28-mar-2017, 12.07.09
-    Author     : Studente
-*/
 
 body{
-    background-color: #e4e4e4;
+    background-color: #FFFBF6;
     font: 17px/25px "Open Sans", Arial, sans-serif;/*Si differenziano per le tipologie di grazie. Dimensione font, dim linea e un font senza grazie*/
-    
+    color: black;  
+}
+
+h1{
+    margin-top: 40px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    color: #722585;
+    font-weight: bold;
+    text-indent: 40px;
+    font-size: 350%;
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+h2{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: #7F2865;
+    font-weight: bold;
+    text-indent: 40px;
+    font-size: 75%; 
+    font-family:  "Anton", Arial, sans-serif;
 }
 
 /*Adobe kuler*/
