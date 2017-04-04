@@ -13,7 +13,7 @@ h1{
     color: #722585;
     font-weight: bold;
     text-indent: 40px;
-    font-size: 350%;
+    font-size: 230%;
     font-family: "Open Sans", Arial, sans-serif;
 }
 
@@ -23,9 +23,67 @@ h2{
     margin-right: 0px;
     color: #7F2865;
     font-weight: bold;
-    text-indent: 40px;
-    font-size: 75%; 
+    text-indent: 20px;
+    font-size: 120%; 
     font-family:  "Anton", Arial, sans-serif;
 }
+
+h3{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: #3C4C8C;
+    font-weight: bold;
+    text-indent: 20px;
+    font-size: 85%; 
+    font-family:  "Anton", Arial, sans-serif;
+}
+
+
+
+.clog{
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    
+    
+}
+
+.clog a:link{ 
+    
+    font-size: 25px;
+    text-decoration: none; 
+    font-family: italic;
+    font-family: bold;
+    color : #591134; 
+    font-family:  "Open Sans", Arial, sans-serif;
+}
+.clog a:visited{ 
+    
+    font-size: 25px;
+    text-decoration: none; 
+    font-family: italic;
+    font-family: bold;
+    color : #1C2587; 
+    font-family:  "Open Sans", Arial, sans-serif;
+}
+
+label,input,textArea{
+    color: #111111;
+    font-family:  "Open Sans", Arial, sans-serif;
+    
+}
+
+/*
+.cpg a:link, a:visited{ 
+    
+    font-size: 15px;
+    text-decoration: underline; 
+    font-family: italic;
+    font-family:  "Aron", Arial, sans-serif;
+}
+*/
+
 
 /*Adobe kuler*/
