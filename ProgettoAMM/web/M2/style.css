@@ -1,8 +1,10 @@
 
 body{
-    background-color: #FFFBF6;
+    background-color: #FFFAFD;
     font: 17px/25px "Open Sans", Arial, sans-serif;/*Si differenziano per le tipologie di grazie. Dimensione font, dim linea e un font senza grazie*/
     color: black;  
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 h1{
@@ -12,7 +14,7 @@ h1{
     margin-bottom: 20px;
     color: #722585;
     font-weight: bold;
-    text-indent: 40px;
+    text-indent: 20px;
     font-size: 230%;
     font-family: "Open Sans", Arial, sans-serif;
 }
@@ -38,21 +40,31 @@ h3{
     font-size: 85%; 
     font-family:  "Anton", Arial, sans-serif;
 }
+#Friends h3{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    color: #3C4C8C;
+    font-weight: bold;
+    text-indent: 30px;
+    font-size: 92%; 
+    font-family:  "Anton", Arial, sans-serif;
+}
 
 
+/*link login */
 
 .clog{
     text-align: right;
     position: absolute;
     top: 0px;
-    right: 10px;
-    
-    
+    right: 10px;    
 }
 
 .clog a:link{ 
     
-    font-size: 25px;
+    font-size: 30px;
     text-decoration: none; 
     font-family: italic;
     font-family: bold;
@@ -61,7 +73,7 @@ h3{
 }
 .clog a:visited{ 
     
-    font-size: 25px;
+    font-size: 30px;
     text-decoration: none; 
     font-family: italic;
     font-family: bold;
@@ -69,6 +81,13 @@ h3{
     font-family:  "Open Sans", Arial, sans-serif;
 }
 
+
+.clog a:hover{ /* se il mouse passa sopra il link definaimo il comportamento di quel link */
+    font-weight: bold;
+}
+
+
+/**Modifico il font della text area */
 label,input,textArea{
     color: #111111;
     font-family:  "Open Sans", Arial, sans-serif;
@@ -84,6 +103,85 @@ label,input,textArea{
     font-family:  "Aron", Arial, sans-serif;
 }
 */
+
+
+/** stile delle liste */
+#Summury li{ 
+    
+    list-style-type: none; 
+    display: inline-block; 
+    background: white;
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    text-indent: 0px;
+   
+}
+
+.list ul{ 
+    
+    list-style-type: none; 
+    display: inline-block; 
+    width: 100%;
+    margin-top: 0px;
+    margin-left: 0px;
+    text-indent: 0px;
+   
+}
+
+#Friends{
+    width: 170px;
+    float: left;
+    padding: 5px;
+    font-size: 15px; 
+}
+
+/* Visualizzazione della lista di amici a sinistra della pagina */
+#Friends ul{
+    padding-left: 25px;
+    
+}
+
+#Friends a { 
+    font-size: 14px;
+    margin-left: 0px;
+    display: block;
+    width:120px;
+    padding: 2px 2px 2px 10px;
+    border: 0.5px solid #FDFAFF;
+    text-decoration: none;
+   
+}
+#Friends a:link{
+    color: #000000;
+    font-family: normal;
+    margin-left: 0px;
+    color : #2A2C42; 
+    font-family:  "Open Sans", Arial, sans-serif;
+    
+}
+
+#Friends a:hover {
+    font-weight: normal;
+    border: 1px solid #F4DCFA;
+    background: white;
+    color : #2A2C42; 
+    font-family: normal;
+    margin-left: 0px;
+    color : #2A2C42; 
+    font-family:  "Open Sans", Arial, sans-serif; 
+}
+
+
+#Title {
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-top: 5px;
+    width: 300px;
+    float: left;
+    font-size: 15px; 
+}
 
 
 /*Adobe kuler*/
