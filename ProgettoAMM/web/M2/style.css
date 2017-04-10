@@ -1,10 +1,8 @@
 
 body{
-    background-color: #FFFAFD;
-    font: 17px/25px "Open Sans", Arial, sans-serif;/*Si differenziano per le tipologie di grazie. Dimensione font, dim linea e un font senza grazie*/
+    background-color: #F8ECFF;
+    font: 14px/21px "Open Sans", Arial, sans-serif;/*Si differenziano per le tipologie di grazie. Dimensione font, dim linea e un font senza grazie*/
     color: black;  
-    margin-left: 0px;
-    margin-right: 0px;
 }
 
 h1{
@@ -122,24 +120,28 @@ label,input,textArea{
     
     list-style-type: none; 
     display: inline-block; 
-    width: 100%;
+    width: 50px;
+    height: 50px; 
     margin-top: 0px;
     margin-left: 0px;
-    text-indent: 0px;
+    /**text-indent: 0px;*/
    
 }
 
 #Friends{
-    width: 170px;
     float: left;
+    margin-right:  0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    width: 170px;
     padding: 5px;
     font-size: 15px; 
 }
 
 /* Visualizzazione della lista di amici a sinistra della pagina */
-#Friends ul{
+#Friends ul{ 
     padding-left: 25px;
-    
 }
 
 #Friends a { 
@@ -148,7 +150,7 @@ label,input,textArea{
     display: block;
     width:120px;
     padding: 2px 2px 2px 10px;
-    border: 0.5px solid #FDFAFF;
+    border: 0.5px solid #F8ECFF;
     text-decoration: none;
    
 }
@@ -163,8 +165,8 @@ label,input,textArea{
 
 #Friends a:hover {
     font-weight: normal;
-    border: 1px solid #F4DCFA;
-    background: white;
+    border: 1px solid #F8ECFF;
+    background:#FAF0FF;
     color : #2A2C42; 
     font-family: normal;
     margin-left: 0px;
@@ -172,16 +174,89 @@ label,input,textArea{
     font-family:  "Open Sans", Arial, sans-serif; 
 }
 
-
-#Title {
+/*titolo della descrizione */
+header{
+    margin-right: 0px;
     padding-left: 0px;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
     padding-right: 0px;
     padding-top: 5px;
     width: 300px;
-    float: left;
     font-size: 15px; 
 }
 
+
+/*dimensione max di una immagine nel post */
+#Posts img{
+    max-width: 276px;
+    max-height: 77px;
+}
+
+/* post centrati nella pagina. Stacca tutti i post dal flusso normale della pagina*/
+#Posts {
+    float: left; 
+    margin-left: 70px;
+    width: 410px;    
+    }
+    
+/* link home e login della pagina bacheca */  
+nav {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    top:0px;
+    margin-top: 0px;
+    margin-left: 300px;    
+}
+nav ul{
+    padding-left: 0px;
+    
+}
+
+/**
+nav ul:after{
+    content: '\A';    
+} */
+
+.post {
+    background: white;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    /*border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,2);*/
+}
+
+.profilepic{
+    margin-right: 25px;
+    float: left;
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
+}
+
+
+/*
+.profilepic .nameprofile{
+  
+    margin-left: 70px;
+    margin-top: 0px;
+    float: right;
+    content: '\A';
+    width: 100px;
+}*/
+
+/*
+.userData {
+    float: left;
+}*/
+
+/**
+.profilepic ,.nameprofile{
+        
+        display: inline-block;
+        float: left;
+}*/
 
 /*Adobe kuler*/
