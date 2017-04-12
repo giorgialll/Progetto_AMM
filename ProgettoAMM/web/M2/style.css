@@ -579,11 +579,15 @@ input:focus{
     margin-right: 20%;
     }
     #Description h2{
-        margin-top: 10px;
+        margin-top: 15px;
         margin-left: 0px;
     }
-    
-    #title h1{
+    #titlel, .blockbar header{
+        width: 75%;
+    }
+    #title h1, #Bacheca h1{
+        margin-right: 0px;
+        padding-right: 0px;
         font-size: 25px;
     }
     #Section a{
@@ -591,9 +595,68 @@ input:focus{
     }
     
     .post,#Posts{
-        width: 75%;
+        width: 80%;
         margin-left: 10%;
-        margin-right: 0px;
+        margin-right: 15%;
+        margin-bottom: 20%;
+        padding-bottom: 10%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .picture > img{
+        
+        margin-left: 10%;
+        margin-right:  10%;
+        width: 80%;
+        height: 75%;
+    }
+    .blockbar{
+        margin-left: 0px;
+    }
+    #thirdPost a{
+        font-size: 12px;
+    }
+    #thirdPost a:link{
+        width:50%;
+    }
+    
+    #logout li{
+        font-size: 12px;
+        margin-right: -65%;
+    }
+    
+  /*--------*/
+
+  
+    .barra{
+        left:160px;
+        width: 0px;
+        height: 0px;
+        margin-left: -50%;
+        margin-top: 25%;
+
+    }
+    
+    .barra a{
+        color: #84078A;
+    }
+    nav li{
+        padding: 0px;
+    }
+   
+    nav ul{
+        width: 0%;
+        height: 0%;
+        margin-left: -230%;
+        margin-top: 35%;
+        margin-right: 20%;
+      
+    }
+    
+    .Friends{
+        margin-top: 32%;
+        margin-left: 20%;
+        margin-right: 20%;
     }
 }
 /*Adobe kuler*/
