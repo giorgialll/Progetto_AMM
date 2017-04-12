@@ -1,12 +1,13 @@
 
 body{
+    display: block;
     top: 0px;
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
     background-color: #F8ECFF;
     font: 14px/21px "Open Sans", Arial, sans-serif;/*Si differenziano per le tipologie di grazie. Dimensione font, dim linea e un font senza grazie*/
-    color: black;  
+    color: #0E0319;  
 }
 
 h1{
@@ -32,7 +33,9 @@ h2{
     font-family:  "Anton", Arial, sans-serif;
 }
 
-h3{
+
+h3, #Iscrizione,#gratis{
+    
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
@@ -42,7 +45,10 @@ h3{
     font-size: 85%; 
     font-family:  "Anton", Arial, sans-serif;
 }
-#Friends h3{
+
+/**PAGINA BACHECA*/
+
+.Friends h3{
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
@@ -92,33 +98,12 @@ h3{
 /**Modifico il font della text area */
 label,input,textArea{
     color: #111111;
+    font-size: 18px;
     font-family:  "Open Sans", Arial, sans-serif;
     
 }
 
-/*
-.cpg a:link, a:visited{ 
-    
-    font-size: 15px;
-    text-decoration: underline; 
-    font-family: italic;
-    font-family:  "Aron", Arial, sans-serif;
-}
-*/
 
-
-/** stile delle liste */
-#Summury li{ 
-    
-    list-style-type: none; 
-    display: inline-block; 
-    background: white;
-    width: 100%;
-    margin-top: 0px;
-    margin-left: 0px;
-    text-indent: 0px;
-   
-}
 
 .list ul{ 
     text-decoration: none;
@@ -130,7 +115,9 @@ label,input,textArea{
    
 }
 
-#Friends{
+
+
+.Friends{
     float: left;
     margin-right:  0px;
     margin-left: 0px;
@@ -142,11 +129,11 @@ label,input,textArea{
 }
 
 /* Visualizzazione della lista di amici a sinistra della pagina */
-#Friends ul{ 
+.Friends ul{ 
     padding-left: 25px;
 }
 
-#Friends a { 
+.Friends a { 
     font-size: 14px;
     margin-left: 0px;
     display: block;
@@ -156,7 +143,7 @@ label,input,textArea{
     text-decoration: none;
    
 }
-#Friends a:link{
+.Friends a:link{
     color: #000000;
     font-family: normal;
     margin-left: 0px;
@@ -165,7 +152,7 @@ label,input,textArea{
     
 }
 
-#Friends a:hover {
+.Friends a:hover {
     font-weight: normal;
     border: 1px solid #F8ECFF;
     background:#FAF0FF;
@@ -207,13 +194,15 @@ header{
 
 
 .post {
+    width: 550px;
     background: white;
-    margin-top: 10px;
+    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
     /*border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,2);*/
 }
+
 
 .profilepic{    
     margin-right: 25px;
@@ -225,19 +214,19 @@ header{
 }
 
 .userData{
-    margin-top: 65px;
+    margin-top: 90px;
 }
 
-.picture {
-    margin-left: 150px;
+.picture > img{
+    margin-top: 15px;
+    margin-left: 130px;
+    width: 276px;
+    height: 77px;
     
 }
 
 
-
-
-
-#barra a { 
+.barra a { 
     color: white;
     font-size: 19px;
     margin-left: 0px;
@@ -247,7 +236,7 @@ header{
     text-decoration: none;
    
 }
-#barra a:link{
+.barra a:link{
     font-size: 19px;
     font-family: normal;
     margin-left: 0px;
@@ -256,7 +245,12 @@ header{
     
 }
 
-#barra a:hover {
+.barra .pg_attuale{
+    background: #E2B7FF;
+}
+
+
+.barra a:hover {
     font-size: 19px;
     border: 1px solid #E2B7FF;
     background:#E2B7FF;
@@ -267,7 +261,7 @@ header{
 }
 
 
-#barra {
+.barra {
     font-size: 15px;
     text-align: center;
     width: auto;
@@ -282,7 +276,7 @@ header{
    
 }
 
-ul#barra li{
+ul.barra li{
     display: inline-block;
     float: left;
 }
@@ -310,34 +304,296 @@ nav li.active{
 /* barra con titolo del social e link*/
 
 .blockbar{
-
+    width: auto;
     background: #84078A;
-    top: 0px;
+
     margin-left: 0px;
     margin-right: 0px;
     height: 50px;
 }
 
-#imglog{
-    width: 20px;
-    height: 20px;
-    
-}
-
-#logout{
+#logout,#Logout{
+    color: white;
     margin-top: 0px;
     text-align: right;
     position: absolute;
     top: 0px;
     right: 55px;
 }
-#log_out{
+
+#log_out, #Log_out{
     color: white;
 }
-#log_out a{
+#log_out a , #Log_out a{
     color: white;
     font-size: 12px;
     margin-left: 0px;
       
+}
+.nameprofile{
+    color: #440F7D;
+}
+
+
+
+#navblock{
+    width: 500px;
+    height: auto;
+    background: #84078A;
+    text-align: center;
+    margin-right: 65%;
+    margin-left: 35%;
+    margin-top:70px;
+    display: block;  
+}
+
+#profileDataForm input{
+    padding: 0px;
+    width: 600px;
+    height: 35px;
+    margin-bottom: 20px;
+    
+}
+#accessForm input{
+    padding: 0px;
+    width: 440px;
+    height: 35px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    
+}
+
+#accessForm{
+    margin-left: 35%;
+    margin-right: 90%;
+    display: block;
+    width: 47%;
+    /*margin-left: 30%;*/
+    /*margin-right: 50%;*/
+    margin-top: 25px;
+    /*border: 3px solid #000000;*/
+}
+
+
+
+.credenziali{
+    
+    width: 20px;
+    margin-left: 30px;
+    font-size: 20px;
+    color: #3E0447;
+}
+
+
+
+label.etichetta{
+    float: left;
+    clear: left;
+    margin-bottom: 50px;
+}
+
+
+label.credenziali {
+    margin-top: 10px;
+}
+
+
+
+#profileDataForm{
+    width: 600px;
+    position: absolute;
+    font-size: 20px;
+    margin-left: 30%;
+    margin-top: -6%;
+    
+}
+
+
+#profileDataForm input{
+    float: right;
+    clear: right;
+    width: 300px;
+    height: 25px;
+    
+}
+
+#profileDataForm textArea{
+    float: right;
+    clear: right;
+    width: 300px;
+    height: 100px;
+    margin-bottom: 20px;
+    
+}
+#imgprofilo, #profileDataForm form{
+    display: inline-block;
+}
+#imgprofilo > img{
+    margin-left: 100px;
+    margin-top: 120px;
+    height: 100px;
+    width: 90px;
+    -moz-border-radius: 180px;
+    -webkit-border-radius: 180px;
+    border-radius: 180px
+}
+#etichettadata{
+    margin-top: 50px;
+}
+
+#profileDataForm button {
+    margin-top: 0%;
+}
+
+input:focus{
+   outline: none;
+   border-color: #9B12FF;
+   box-shadow: 0 0 10px #9B12FF;
+}
+
+.botton{
+    width: 440px;
+    height:35px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#profileDataForm button , .botton{
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 10px ;
+    
+    text-align: center;
+   
+    background: #DDD3FD;
+    border: none;
+    font-weight: bold;
+    font-size:  24px;
+    color: #4F055C;
+}
+
+#profileDataForm button{
+    width: 600px;
+    height:35px;
+    margin-left: 0px;
+}
+
+
+#NB {
+    margin-top: 10px;
+    margin-left: 15px;
+    float: left;
+    width: 54px;
+    height: 44px;
+}
+
+
+
+#title h1{
+    margin-top: 0px;
+    padding-top: 15px;
+}
+
+
+#textArea{
+  
+    margin-bottom: 20px;
+}
+
+
+#home{
+    margin-left: 30px;
+}
+#Description{
+    width: 75%;
+}
+#Body{
+    width: 75%;
+    text-align: justify;
+    margin-top: 3%;
+    margin-left: 25%;
+    margin-right: 20%;
+}
+
+
+@media only screen and (max-width: 480px){
+    
+    #navblock {
+        position: relative;
+        width: 55%;
+        height: 24%;
+        margin-left:23%;
+        margin-right: 5%;
+    }
+    #navblock h1{
+        display: block;
+        text-align: left;
+        position: relative;
+        font-size: 100%;
+        
+    }
+    
+    #accessForm form{
+        position: relative;
+        display: block;
+        margin-left: -20%;
+        
+    }
+    #accessForm input{
+        margin-bottom:  5px;
+        clear: left;
+        float: left;
+        position: relative;
+        width: 85%;
+        height: 24%;
+        margin: 0px;
+    }
+    
+    #accessForm label{
+        margin-left: 23%;
+        font-size: 17px;
+    }
+    #NB{
+        margin-top: 10px;
+        margin-left: 3px;
+        margin-right: 0px;
+        float: left;
+        width: 44px;
+        height: 34px;
+    }
+  
+    #accessForm button{
+        box-shadow: 0 0 10px #9B12FF;
+        clear: left;
+        float: left;
+        position: relative;
+        width: 85%;
+        height: 20%;
+        margin: 0px;
+        margin-top: 25px;
+    }
+    
+    #Body{
+    width: 75%;
+    text-align: justify;
+    margin-top: 45%;
+    margin-left: 10%;
+    margin-right: 20%;
+    }
+    #Description h2{
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    
+    #title h1{
+        font-size: 25px;
+    }
+    #Section a{
+        font-size: 20px;
+    }
+    
+    .post,#Posts{
+        width: 75%;
+        margin-left: 10%;
+        margin-right: 0px;
+    }
 }
 /*Adobe kuler*/
