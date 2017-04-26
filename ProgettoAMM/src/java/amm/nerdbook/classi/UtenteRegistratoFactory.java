@@ -6,24 +6,24 @@ import java.util.ArrayList;
  *
  * @author giorgia
  */
-public class UtentiRegistratiFactory {
+public class UtenteRegistratoFactory {
    
-    private static UtentiRegistratiFactory singleton;
+    private static UtenteRegistratoFactory singleton;
 
-    public static UtentiRegistratiFactory getInstance() {
+    public static UtenteRegistratoFactory getInstance() {
         if (singleton == null) {
-            singleton = new UtentiRegistratiFactory();
+            singleton = new UtenteRegistratoFactory();
         }
         return singleton;
     }
 
-    private ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+    private ArrayList<UtenteRegistrato> listaUtenti = new ArrayList<UtenteRegistrato>();
 
-    private UtentiRegistratiFactory() {
+    private UtenteRegistratoFactory() {
         //Creazione utenti
 
         //Bob Dog
-        UtentiRegistrati utente1 = new UtentiRegistrati();
+        UtenteRegistrato utente1 = new UtenteRegistrato();
         utente1.setId(0);
         utente1.setNome("Bob");
         utente1.setCognome("Dog");
@@ -34,8 +34,8 @@ public class UtentiRegistratiFactory {
         utente1.setUrlProfilo("image/dog.PNG");
 
         //Lisa Simpson
-        UtentiRegistrati utente2 = new UtentiRegistrati();
-        utente2.setId(0);
+        UtenteRegistrato utente2 = new UtenteRegistrato();
+        utente2.setId(1);
         utente2.setNome("Lisa");
         utente2.setCognome("Simpson");
         utente2.setDataNascita("14 Genaio 1990");
@@ -47,8 +47,8 @@ public class UtentiRegistratiFactory {
         
         //Dexter
         
-        UtentiRegistrati utente3 = new UtentiRegistrati();
-        utente3.setId(0);
+        UtenteRegistrato utente3 = new UtenteRegistrato();
+        utente3.setId(2);
         utente3.setNome("Dexter");
         utente3.setDataNascita("31 Dicembre 1995");
         utente3.setFrase("Il mio laboratorio è unico");
@@ -59,11 +59,12 @@ public class UtentiRegistratiFactory {
         listaUtenti.add(utente1);
         listaUtenti.add(utente2);
         listaUtenti.add(utente3);
+        
        
     }
 
-    public UtentiRegistrati getUtentiId(int id) {
-        for (UtentiRegistrati utente : this.listaUtenti) {
+    public UtenteRegistrato getUtentiId(int id) {
+        for (UtenteRegistrato utente : this.listaUtenti) {
             if (utente.getId() == id) {
                 return utente;
             }

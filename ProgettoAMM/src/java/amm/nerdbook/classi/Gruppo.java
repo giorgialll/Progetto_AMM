@@ -4,29 +4,33 @@
  * and open the template in the editor.
  */
 package amm.nerdbook.classi;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author giorgia
  */
-public class Gruppi {
+public class Gruppo {
+
+   
     
-    private UtentiRegistrati[] users_gruppo ;
+    private List<UtenteRegistrato> users_gruppo ;
     private int id;
     private String nome;
+    private String descrizione;
     
-    
-    public Gruppi(){
-        
+    public Gruppo(){   
         nome="";
         id=0;
-        users_gruppo= new UtentiRegistrati[30];        
+        users_gruppo= new ArrayList<>();       
+       
     }
     
      /**
      * @return utenti del gruppo
      */
-    public UtentiRegistrati[] getUsersGruppo(){
+    public List<UtenteRegistrato> getUsersGruppo(){
         return users_gruppo;
     }
     
@@ -34,10 +38,14 @@ public class Gruppi {
      * 
      * @param users_gruppo  utenti gruppo
      */
-    public void setUsersGruppo (UtentiRegistrati[] users_gruppo) {
-	if (users_gruppo.length!=0) {
+    public void setUsersGruppo (List<UtenteRegistrato> users_gruppo) {
+	if (users_gruppo.size()!=0) {
                 this.users_gruppo = users_gruppo;
         }
+    }
+    
+    public void addUtente(UtenteRegistrato utente){
+        this.users_gruppo.add(utente);
     }
     
      /**
@@ -68,6 +76,18 @@ public class Gruppi {
         this.nome = nome;
     }
     
-    
+     /**
+     * @return the descrizione
+     */
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    /**
+     * @param descrizione the descrizione to set
+     */
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
     
 }

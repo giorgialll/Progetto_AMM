@@ -24,7 +24,7 @@ public class PostFactory {
 
     private PostFactory() {
         
-        UtentiRegistratiFactory utenteFactory = UtentiRegistratiFactory.getInstance();
+        UtenteRegistratoFactory utenteFactory = UtenteRegistratoFactory.getInstance();
 
         //Creazione del Post
         Post post1 = new Post();
@@ -63,7 +63,7 @@ public class PostFactory {
         return null;
     }
 
-    public List getPostList(UtentiRegistrati user) {
+    public List getPostList(UtenteRegistrato user) {
 
         List<Post> listaPost = new ArrayList<Post>();
 
