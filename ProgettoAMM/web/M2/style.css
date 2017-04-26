@@ -217,6 +217,17 @@ header{
     margin-top: 90px;
 }
 
+ .profilepic > img{
+        padding: 10px;
+        -moz-border-radius: 180px;
+        -webkit-border-radius: 180px;
+        border-radius: 180px
+        
+}
+
+p{
+    padding: 10px;
+}
 .picture > img{
     margin-top: 15px;
     margin-left: 130px;
@@ -342,7 +353,7 @@ nav li.active{
     background: #84078A;
     text-align: center;
     margin-right: 65%;
-    margin-left: 35%;
+    margin-left: 30%;
     margin-top:70px;
     display: block;  
 }
@@ -364,7 +375,7 @@ nav li.active{
 }
 
 #accessForm{
-    margin-left: 35%;
+    margin-left: 30%;
     margin-right: 90%;
     display: block;
     width: 47%;
@@ -429,8 +440,10 @@ label.credenziali {
     display: inline-block;
 }
 #imgprofilo > img{
-    margin-left: 100px;
-    margin-top: 120px;
+    margin-left: 30px;
+    margin-top: 60px;
+    margin-right: 35px;
+    margin-bottom: 35px;
     height: 100px;
     width: 90px;
     -moz-border-radius: 180px;
@@ -520,7 +533,7 @@ input:focus{
         position: relative;
         width: 55%;
         height: 24%;
-        margin-left:23%;
+        margin-left:20%;
         margin-right: 5%;
     }
     #navblock h1{
@@ -714,81 +727,188 @@ input:focus{
 @media only screen and (min-width: 480px) and (max-width: 1024px){
     
     #Body{
-        margin-top: 12%;
+        margin-top: 27%;
         margin-left: 5%;
-        margin-right: 0%;
+        width: 95%;
     }
     
     #Description h2{
-        width: 80%;
+        width: 95%;
+        display: inline-block;
+        
+    }
+    
+    h3{
+        font-size: 14px;
     }
     
     #Info, #Description{
         width: 80%;
         
     }
-    #Summury a { 
-        color: white;
-        font-size: 19px;
+   
+    /**pagina login */
+    
+    #navblock {
+        position: relative;
+        width: 50%;
+        height: 24%;
+        margin-left:23%;
+        margin-right: 5%;
+    }
+    
+    #navblock h1{
         margin-left: 0px;
         display: block;
-        width:120px;
-        padding: 2px 2px 2px 10px;
-        text-decoration: none;
+        text-align: left;
+        position: relative;
+        font-size: 30px;
+        
     }
     
-    #Summury a:link{
-        font-size: 19px;
-        font-family: normal;
-        margin-left: 0px;
-        color : white; 
-        font-family:  "Open Sans", Arial, sans-serif;
-
+    #accessForm form{
+        position: relative;
+        display: block;
+        margin-left: -5%;
+        
     }
-
-    #Summury .pg_attuale{
-        background: #E2B7FF;
-    }
-
-
-    #Summury a:hover {
-        font-size: 19px;
-        border: 1px solid #E2B7FF;
-        background:#E2B7FF;
-        color : white; 
-        font-family: normal;
-        margin-left: 0px; 
-        font-family:  "Open Sans", Arial, sans-serif; 
-    }
-
-
-    #Summury {
+    #accessForm input{
+        margin-bottom:  5px;
         clear: left;
         float: left;
-        font-size: 15px;
-        text-align: center;
-        width: auto;
-        height: auto;
-        list-style-type: none;
-        display: inline-block;
-        
         position: relative;
-        left: 10px;
-       
-        margin-top: 0px;
-        margin-bottom: 30px;
-
+        width: 80%;
+        height: 24%;
+        margin-top: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 10px;
     }
-
     
-
-
-
+    #accessForm label{
+        text-align: left;
+        font-size: 22px;
+    }
     
     
+    #NB{
+        margin-top: 10px;
+        margin-left: 25px;
+        margin-right: 5px;
+        float: left;
+        width: 44px;
+        height: 34px;
+    }
+  
+    #accessForm button{
+        box-shadow: 0 0 10px #9B12FF;
+        clear: left;
+        float: left;
+        position: relative;
+        width: 80%;
+        height: 40px;
+        margin: 0px;
+        margin-top: 25px;
+    }
     
-
-
+    header h1{
+        width: 200px;
+        margin-right: 0px;
+    }
     
+    header{
+        width: 200px;
+        
+    }
+    
+    nav ul, nav li{
+        margin-left: 0px;
+        padding: 0px;
+    }
+    
+    .barra{
+        position: absolute;
+        left: 20px;
+        margin-top: 45px;
+        margin-bottom: 40px;
+       
+    }
+    
+    .barra a{
+        color: #84078A;
+    }
+    
+    .barra ul{
+        color: #84078A;
+    }
+    #Posts{
+        margin-top: 50px;
+    }
+    
+    .post{
+        width: 95%;
+        height: 95%;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        padding: 10px;
+        padding-right: 0px;
+    }
+    
+    .picture > img {
+        margin-left: 20px;
+        
+    }
+    
+    #Posts{
+        margin-left: 20px;
+    }
+    
+    
+    /*------*/
+    #imgprofilo > img{
+        margin-top: 70px;
+        margin-right: 20px;
+        margin-bottom: 40px;
+        
+    }
+    
+    #Summury{
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    label,input,textArea{
+        font-size: 15px;
+    }
+    
+    #profileDataForm textArea{
+        width: 80%;
+    }
+    #profileDataForm input, #profileDataForm label{
+        width: 80%;
+        height: 20%;
+    }
+    
+    #profileDataForm{
+        margin-left: 18%;
+        width: 80%;
+    }
+    #profileDataForm form{
+        width: 80%;
+        margin-left: 20%;
+    }
+    
+    #profileDataForm button{
+        width: 100%;
+        font-size: 20px;
+    }
+    
+    #profileDataForm label, #profileDataForm textArea{
+        margin-bottom: 10px;
+    }
+    
+    #etichettadata{
+        margin-top: 15px;
+    }
+   
 }
 /*Adobe kuler*/

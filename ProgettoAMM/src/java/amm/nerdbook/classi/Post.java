@@ -12,7 +12,7 @@ package amm.nerdbook.classi;
 public class Post {
     
     public enum Type {
-        TEXT, IMAGE
+        TEXT, IMAGE,LINK
     };
     
     protected int id;
@@ -40,6 +40,13 @@ public class Post {
     public void setId(int id) {
         this.id = id;
     }
+    
+     /**
+     * @param user the user to set
+     */
+    public void setUser(UtentiRegistrati user) {
+        this.user = user;
+    }
 
     /**
      * @return the user
@@ -48,12 +55,7 @@ public class Post {
         return user;
     }
 
-    /**
-     * @param user the user to set
-     */
-    public void setUser(UtentiRegistrati user) {
-        this.user = user;
-    }
+  
     
     
     /**

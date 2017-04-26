@@ -11,4 +11,5 @@ package amm.nerdbook.classi;
  */
 public class GruppiFactory {
     
+    
 }
