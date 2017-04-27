@@ -10,20 +10,25 @@ package amm.nerdbook.classi;
  * @author giorgia
  */
 public class Post {
-    
+  
     public enum Type {
         TEXT, IMAGE,LINK
     };
     
     protected int id;
     protected UtenteRegistrato user;
-    private String contenuto;
+    private String contenuto_testo;
+    private String contenuto_im;
+    private String contenuto_link;
+    
     private Type postType;
     
     public Post() {
         id = 0;
         user = null;
-        contenuto = "";
+        contenuto_im = "";
+        contenuto_testo="";
+        contenuto_link="";
         postType = Type.TEXT;
     }
     
@@ -58,19 +63,7 @@ public class Post {
   
     
     
-    /**
-     * @return the content
-     */
-    public String getContenuto() {
-        return contenuto;
-    }
-
-    /**
-     * @param contenuto the content to set
-     */
-    public void setContenuto(String contenuto) {
-        this.contenuto = contenuto;
-    }
+ 
 
     /**
      * @return the postType
@@ -86,5 +79,48 @@ public class Post {
         this.postType = postType;
     }
     
+    
+      /**
+     * @return the contenuto_im
+     */
+    public String getContenuto_im() {
+        return contenuto_im;
+    }
+
+    /**
+     * @param contenuto_im the contenuto_im to set
+     */
+    public void setContenuto_im(String contenuto_im) {
+        this.contenuto_im = contenuto_im;
+    }
+    
+    /**
+     * @return the contenuto_testo
+     */
+    public String getContenuto_testo() {
+        return contenuto_testo;
+    }
+
+    /**
+     * @param contenuto_testo the contenuto_testo to set
+     */
+    public void setContenuto_testo(String contenuto_testo) {
+        this.contenuto_testo = contenuto_testo;
+    }
+
+    /**
+     * @return the contenuto_link
+     */
+    public String getContenuto_link() {
+        return contenuto_link;
+    }
+
+    /**
+     * @param contenuto_link the contenuto_link to set
+     */
+    public void setContenuto_link(String contenuto_link) {
+        this.contenuto_link = contenuto_link;
+    }
+
     
 }
