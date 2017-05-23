@@ -15,6 +15,7 @@ import java.util.List;
 public class GruppoFactory {
     
     private static GruppoFactory singleton;
+    private String connectionString ;
 
     public static GruppoFactory getInstance() {
         if (singleton == null) {
@@ -27,7 +28,7 @@ public class GruppoFactory {
 
     private GruppoFactory() {
         
-        GruppoFactory gruppoFactory = GruppoFactory.getInstance();
+        
         
         UtenteRegistratoFactory utenteregistratoFactory =UtenteRegistratoFactory.getInstance();
         
@@ -39,7 +40,7 @@ public class GruppoFactory {
         Gruppo gruppo1 = new Gruppo();
         gruppo1.setId(1);
         gruppo1.setNome("Nerd for nerd");
-        gruppo1.setDescrizione("Solo per i nerd");
+        gruppo1.setDescrizione("Solo per nerd");
         gruppo1.addUtente(utente0);
         gruppo1.addUtente(utente1);
         
@@ -48,7 +49,6 @@ public class GruppoFactory {
         gruppo2.setNome("Travel");
         gruppo2.setDescrizione("Adatto a chi ama viaggiare e conoscere nuove culture");
         gruppo2.addUtente(utente0);
-        gruppo2.addUtente(utente1);
         gruppo2.addUtente(utente2);
         
         listaGruppi.add(gruppo1);
@@ -67,5 +67,12 @@ public class GruppoFactory {
                 return gruppo;
         }
         return null;
+    }
+     
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+            return this.connectionString;
     }
 }

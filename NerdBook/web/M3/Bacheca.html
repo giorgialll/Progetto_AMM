@@ -3,7 +3,7 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->
+-->    
 <html>
     <head>
        <title>NerdBook - Bacheca </title>
@@ -19,23 +19,24 @@ and open the template in the editor.
         <div id="Bacheca" class="blockbar" >
             <div class="header">
                 <header>
-                    <h1>Nerd Book</h1>            
+                    <h1>NerdBook</h1>            
                 </header>
-
-
-                <nav id="link" class="barra" >         
-                    <ul>
-                        <li><a href="Descrizione.html">Home</a></li>
-                        <li><a href="Profilo.html">Profilo</a></li>
-                        <li><a class ="pg_attuale" href="Bacheca.html">Bacheca </a></li>
-                    </ul>     
-                </nav>
             </div>
+                 
+            <nav id="link" class="barra" >         
+                <ul>
+                    <li><a href="Descrizione.html">Home</a></li>
+                    <li><a href="Profilo.html">Profilo</a></li>
+                    <li><a class ="pg_attuale" href="bacheca.jsp">Bacheca </a></li>
+                </ul>     
+            </nav>
+                 
+           
             
             <div id="logout" class="list">
                 <ul>
                     <li><a>Peppa</a> 
-                    <li><a id="log_out" href="Descrizione.html" >Logout</a> </li>
+                    <li><a id="log_out" href="descrizione.jsp" >Logout</a> </li>
                 </ul>
             </div>
         </div>
@@ -53,14 +54,39 @@ and open the template in the editor.
                 <h3>Gruppi</h3>
                
                     <ul>
-                        <li><a href="Bacheca.html">Nerd for nerd</a></li>
-                        <li><a href="Bacheca.html">Travel</a></li>
+                        <li><a href="bacheca.jsp">Nerd for nerd</a></li>
+                        <li><a href="bacheca.jsp">Travel</a></li>
                     </ul>
                 
             </div>
         </div>
         
+       
         <div id="Posts">
+             
+            <div class="post">
+                <div id="pforpost">
+                     <p>Crea un post</p>
+                </div>
+                <div id="nuovopost">
+                    <form action="servlet.java" method="post"  > 
+                        <textarea name="newpost" id="newpost" class="post" >Aggiungi qui il tuo post...</textarea>
+
+                        <div id="radio">
+                            <label for="textType">Link</label>
+                            <input type="radio" name="postType" value="linkType" id="textType">
+
+                            <label for="imgType">Immagine</label>
+                            <input type="radio" name="postType" value="imgType" id="imgType">
+                            <div> 
+                                <input type="url" id="url" name="url" value="Inserire l'url...">
+                            </div>
+                        </div>
+                        <button type="submit" name="thereIsPost" value="needConfirm" id="pubblica">Pubblica</button>
+                    </form>
+                </div>
+            
+            </div>
             <div id="firstPost" class="post">            
                 <div class="profilepic">                    
                         <img alt="Immagine del profilo" src="image/dog.PNG" >

@@ -9,28 +9,50 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
-<nav>
-    <ul>
-        <c:choose>
-            <c:when test="${page=='Descrizione'}">
-                <li><a href="#Descrizione">In che cosa consiste</a></li>
-                <li><a href="#Iscrizione">Come iscriversi</a></li>
-                <li><a href="#gratis">Pagamento</a></li>
-            </c:when>
+<c:if test="${page != 'login'}">
+    <c:if test="${page == 'descrizione'}">
+         <nav id="Summury" class="Friends">            
+                <ul>
+                    <li><a href="#Descrizione">In che cosa consiste</a></li>
+                    <li><a href="#Iscrizione">Come iscriversi</a></li>
+                    <li><a href="#gratis">Pagamento</a></li>
+                </ul>
 
-            <c:when test="${page == 'Bacheca'}">
-                <li><a href="Descrizione.html">Home</a></li>
-                <li><a href="Profilo.html">Profilo</a></li>
-                <li><a class ="pg_attuale" href="Bacheca.html">Bacheca </a></li>
-            </c:when>
+            </nav>
+    </c:if>
 
-            <c:when test="${page == 'Profilo'}">
-                <li><a href="Descrizione.html">Home</a></li>
-                <li><a class="pg_attuale" href="Profilo.html">Profilo</a></li>
-                <li><a href="Bacheca.html">Bacheca </a></li>
-            </c:when>
+    <c:if test="${page != 'descrizione' }">
 
-        </c:choose>  
-    </ul>
-</nav>
+        <div class="nav">
+            <c:choose>
+                <c:when test="${page=='bacheca'}">        
 
+                    <nav id="link" class="barra" >         
+                        <ul>
+                            <li><a href="Descrizione.html">Home</a></li>
+                            <li><a href="Profilo.html">Profilo</a></li>
+                            <li><a class ="pg_attuale" href="Bacheca.html">Bacheca </a></li>
+                        </ul>     
+                    </nav>                    
+
+                </c:when>
+
+                <c:when test="${page=='profilo'}">
+                    
+                        <nav class="barra" >
+                            <ul>
+                                <li><a href="Descrizione.html">Home</a></li>
+                                <li><a class="pg_attuale" href="Profilo.html">Profilo</a></li>
+                                <li><a href="Bacheca.html">Bacheca </a></li>
+
+                            </ul>
+                        </nav>
+
+                    
+
+                </c:when>
+
+            </c:choose>
+    </c:if>   
+
+</c:if>

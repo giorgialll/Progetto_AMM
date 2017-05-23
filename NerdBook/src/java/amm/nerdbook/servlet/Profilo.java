@@ -48,7 +48,7 @@ public class Profilo extends HttpServlet {
             List<UtenteRegistrato> listaUtenti = UtenteRegistratoFactory.getInstance().getUsersList();
             request.setAttribute("users",listaUtenti);
             
-            request.getRequestDispatcher("profilo.jsp").forward(request, response);
+            request.getRequestDispatcher("M3/profilo.jsp").forward(request, response);
             
            
         }

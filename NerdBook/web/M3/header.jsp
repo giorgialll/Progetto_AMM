@@ -1,6 +1,5 @@
 <%-- 
     Document   : header
-    Created on : 26-apr-2017, 17.36.18
     Author     : giorgia
 --%>
 
@@ -9,36 +8,44 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<div class="header" >
-    <!-- uguale per tutti -->
+<c:if test="${page == 'login'}">
+    <div id="navblock" >
+        <header>   
+            <img id="NB" alt="NerdBook" src="M3/image/NB.png" >
+            <h1>NerdBook </h1>              
+        </header>
+    </div>
     
-    <c:choose>
-        
-        <c:when test="${page=='Descrizione'}">
-            <header>
-                <div id="title">
-                    <h1>Nerd Book</h1>
-                </div>
-            </header>
-        </c:when>
-        
-        <c:when  test="${page == 'Bacheca' || page == 'Profilo'}">
+</c:if>
+
+
+
+<c:choose>
+    <c:when test="${page == 'bacheca'}">
+        <div id="Bacheca" class="blockbar" >
+            <div class="header">
+                <header>
+                    <h1>NerdBook</h1>            
+                </header>
+            </div>
+        </div>
+    </c:when>
+    <c:when test="${page=='descrizione'}">
+        <header>
+            <div id="title">
+                <h1>Nerd Book</h1>
+            </div>
+        </header>
+    </c:when>
+
+    <c:when  test="${page == 'profilo'}">
+        <div class="header">
             <header>
                 <h1>Nerd Book</h1>            
             </header>
-        </c:when>
-        
-    </c:choose>
-  
-    
-   
-        
-    
-    <!-- non login -->
-    <c:if test="${page!='Login'}">
-        <c:set var="page" value="profilo" scope="request"/>
-        <jsp:include page="nav.jsp"/>
-    </c:if>
-    <!-- fine non login -->
-    
-</div>
+        </div>
+    </c:when>
+
+
+</c:choose>
+

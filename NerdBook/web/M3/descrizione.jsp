@@ -1,0 +1,84 @@
+<%-- 
+    Document   : descrizione
+    Author     : giorgia
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<html>
+     <head>
+        <title>NerdBook </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Giorgia Lallai">
+        <meta name="keywords" content="NerdBook gratis gratuito cerca  amore nerd social amicizie amici">
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen"> 
+    </head>
+    
+    <body>
+        <c:set var="page" value="descrizione" scope="request"/>
+        
+        <div class="blockbar">
+            <div class="header">
+                <header>
+                    <div id="title">
+                        <h1>Nerd Book</h1>
+                    </div>
+                </header>
+
+                <nav id="Summury" class="Friends">            
+                    <ul>
+                        <li><a href="#Descrizione">In che cosa consiste</a></li>
+                        <li><a href="#Iscrizione">Come iscriversi</a></li>
+                        <li><a href="#gratis">Pagamento</a></li>
+                    </ul>
+
+                </nav>
+            </div>
+        </div>
+        
+        
+        
+        <div id="Section" class="clog">
+            
+            <p><a href="login.jsp">Login</a></p>
+           
+        </div>
+        
+   
+        
+        
+        <div id="Body">
+            <div id="Description">
+                
+                <h2>Il sito di incontri tra Nerd di tutto il mondo </h2>
+               
+                        <p>Benvenuto!</p>
+                        <p>Ti trovi nel luogo giusto per fare nuove amicizie e conoscere magari la tua anima gemella.</p>
+                        <h3><a id="Descrizione">In che cosa consiste.</a></h3>
+                        <p><a href="#Summury">Indice</a></p>
+                        <p>E' un social che riunisce i Nerd di tutte le nazianalità.<br>Permette a ognuno di loro di confrontare i loro progetti con 
+                            tutti i followers ma soprattutto da la possibiltà di fare nuove conoscenze.</p> 
+            </div>
+            <div id="Info">
+               
+                <h3><a id="Iscrizione">ISCRIVITI solo se sei <strong>maggiorenne</strong>. E' semplice e veloce!</a></h3>
+           
+                
+                <p><a href="#Summury">Indice</a></p>
+                <p>Se sei <strong>maggiorenne</strong> e non sei ancora iscritto,al primo accesso sarà necessario inserire la propria e-mail, un ursername e una password.</p>
+                <p>Successivamente verrà inviata una e-mail di conferma alla propria casella, alla quale sarà allegato un link per convalidare il proprio account.</p>
+                    
+                <p>Con questi semplici passaggi potrai iniziare a utilizzare il tuo account il quale potrai personalizzare sotto ogni punto di vista.</p>
+                 
+                <h3><a id="gratis">E' gratis!</a></h3>
+                 
+                <p><a href="#Summury">Indice</a></p>
+                <p>Non è richiesto nessun tipo di pagamento durante l'iscrizione. Si potrà utilizzare il social in un periodo illimitato in modo gratuito.</p>   
+                
+                
+            </div>
+            
+        </div>
+    </body>
+</html>

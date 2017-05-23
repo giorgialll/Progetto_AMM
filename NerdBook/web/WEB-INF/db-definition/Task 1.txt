@@ -1,0 +1,37 @@
+Utente
+	-id	PK	
+    	-nome
+    	-cognome
+   	-email
+    	-urldelProfilo
+    	-datadinascita
+    	-frasedipresentazione
+   	-password
+
+Post
+	-id	PK
+ 	-user	FK
+	-contenuto_testo
+	-url
+	-tipo   FK
+
+
+Gruppo
+	-id	PK 		
+	-nome
+	-amministratore     FK 
+
+
+Utente Per Gruppo
+    PK
+	-utente   FK		
+	-gruppo   FK
+
+TipoUrl
+	-id	PK	
+	-type
+
+
+
+	
+	

@@ -9,27 +9,27 @@ package amm.nerdbook.classi;
  *
  * @author giorgia
  */
-public class Post {
+public class Post { 
   
     public enum Type {
-        TEXT, IMAGE,LINK
+        NULL,IMAGE,LINK
     };
     
     protected int id;
     protected UtenteRegistrato user;
     private String contenuto_testo;
-    private String contenuto_im;
-    private String contenuto_link;
+    private String url;
+    private Type tipo;
     
     private Type postType;
     
     public Post() {
         id = 0;
         user = null;
-        contenuto_im = "";
+        url = "";
         contenuto_testo="";
-        contenuto_link="";
-        postType = Type.TEXT;
+        tipo = Type.NULL;
+      
     }
     
     /**
@@ -60,11 +60,6 @@ public class Post {
         return user;
     }
 
-  
-    
-    
- 
-
     /**
      * @return the postType
      */
@@ -79,21 +74,7 @@ public class Post {
         this.postType = postType;
     }
     
-    
-      /**
-     * @return the contenuto_im
-     */
-    public String getContenuto_im() {
-        return contenuto_im;
-    }
-
-    /**
-     * @param contenuto_im the contenuto_im to set
-     */
-    public void setContenuto_im(String contenuto_im) {
-        this.contenuto_im = contenuto_im;
-    }
-    
+        
     /**
      * @return the contenuto_testo
      */
@@ -108,19 +89,33 @@ public class Post {
         this.contenuto_testo = contenuto_testo;
     }
 
-    /**
-     * @return the contenuto_link
+       /**
+     * @return the url
      */
-    public String getContenuto_link() {
-        return contenuto_link;
+    public String getUrl() {
+        return url;
     }
 
     /**
-     * @param contenuto_link the contenuto_link to set
+     * @param url the url to set
      */
-    public void setContenuto_link(String contenuto_link) {
-        this.contenuto_link = contenuto_link;
+    public void setUrl(String url) {
+        this.url = url;
     }
-
     
+      /**
+     * @return the tipo
+     */
+    public Type getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(Type tipo) {
+        this.tipo = tipo;
+    }
+
+
 }
