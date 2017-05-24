@@ -96,7 +96,10 @@
                 <button type="submit">AGGIORNA</button>
                 
             </form>
-             
+            <form action="Profilo" method="post">
+                <button type="submit" name="delete">Cancella Account</button>
+            </form>
+            
         </div>
         
     </body>

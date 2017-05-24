@@ -56,6 +56,13 @@ CREATE TABLE UtentePerGruppo (
     PRIMARY KEY (utente,gruppo)
 );
 
+CREATE TABLE Amicizie(
+	idUtente1 INTEGER,
+	idUtente2 INTEGER,
+	FOREIGN KEY (idUtente1) REFERENCES Utente(utente_id),
+	FOREIGN KEY (idUtente2) REFERENCES Utente(utente_id)
+);
+
 
 INSERT INTO Utente (id, nome,cognome, email, urldelProfilo, datadinascita, frasedipresentazione,password)
 VALUES (
@@ -193,4 +200,8 @@ VALUES(
     2,
     2
 );
+
+INSERT INTO Amicizie(idUtente1,idUtente2)
+VALUES
+	(0,1), (1,2), (0,2);
 

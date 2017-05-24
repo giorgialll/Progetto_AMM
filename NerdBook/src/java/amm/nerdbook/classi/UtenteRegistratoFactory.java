@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -204,6 +206,218 @@ public class UtenteRegistratoFactory {
     
    public List getUsersList() {
         return listaUtenti;
+    }
+   
+   
+   public int login(String nome,String password) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "Nerdbook", "password");
+            
+            String query = 
+                      "SELECT utente_id FROM Utente "
+                    + "WHERE nome = ? AND password = ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, nome);
+            stmt.setString(2, password);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+            int loggedUser;
+                
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                loggedUser = res.getInt("utente_id");
+                
+                stmt.close();
+                conn.close();
+                return loggedUser;
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+    public List getFriendList(int id) {
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
+            List<UtenteRegistrato> amici = new ArrayList<>();
+            String query = 
+                    "SELECT * FROM Utente " +
+                    "JOIN Amicizie ON Utente.utente_id = Amicizie.idUtente1 " +
+                    "WHERE Amicizie.idUtente2 = ? " +
+                    "UNION " +
+                    "SELECT * FROM Utente " +
+                    "JOIN Amicizie ON Utente.utente_id = Amicizie.idUtente2 " +
+                    "WHERE Amicizie.idUtente1 = ?";
+            
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Si associano i valori
+            stmt.setInt(1, id);
+            stmt.setInt(2, id);
+            
+        
+            ResultSet res;
+            UtenteRegistrato current;
+            res = stmt.executeQuery();
+            
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                current = new UtenteRegistrato();
+                current.setId(res.getInt("utente_id"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setUrlProfilo(res.getString("urldelprofilo"));
+                current.setFrase(res.getString("frasedipresentazione"));
+                current.setDataNascita(res.getString("datadiNascita"));
+                amici.add(current);
+            }
+            
+            stmt.close();
+            conn.close();
+            return amici;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public void updateProfilo(UtenteRegistrato utente){
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "utete", "0000");
+            
+            String query = 
+                    "UPDATE utente SET nome = ?, cognome = ?, email = ?, "
+                    + "password = ?, frasedipresentazione = ?, urldelprofilo = ?, datadiNascita = ? "
+                    + "WHERE utente_id = ?";
+            
+           
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            
+            stmt.setString(1, utente.getNome());
+            stmt.setString(2, utente.getCognome());
+            stmt.setString(3, utente.getEmail());
+            stmt.setString(4, utente.getPassword());
+            stmt.setString(5, utente.getFrase());
+            stmt.setString(6, utente.getUrlProfilo());
+            stmt.setString(7, utente.getDataNascita());
+            stmt.setInt(8,utente.getId());
+            // Esecuzione query
+            stmt.execute();
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }    
+    
+    
+    public void deleteUser(int userID){
+        
+        PreparedStatement stmtGruppi2 = null;
+        PreparedStatement stmtAmici = null;
+        PreparedStatement stmtPost = null;
+        PreparedStatement stmtGruppi = null; 
+        PreparedStatement stmtUtenti = null;
+        
+        Connection conn = null;
+        
+        
+            
+        try {
+            
+            
+            
+            conn = DriverManager.getConnection(connectionString, "utente", "0000");
+            conn.setAutoCommit(false);
+            
+            String delPost = "DELETE FROM Post "
+                       + "WHERE utente = ? OR UtentePerGruppo.utente = ?";
+            String delGroups = "DELETE FROM UtentePerGruppo "
+                             + "WHERE UtentePerGruppo.utente = ? OR UtentePerGruppo.gruppo IN "
+                                + " (SELECT id FROM Gruppo "
+                                + " WHERE amministratore = ?)";
+            String delGroups2 = "DELETE FROM Gruppo "
+                             + "WHERE amministratore = ?";
+            String delFriends = "DELETE FROM amicizie "
+                              + "WHERE idUtente1 = ? OR idUtente2 = ?";
+            String delUser = "DELETE FROM Utente "
+                           + "WHERE utente_id = ?";
+
+           
+            
+            stmtPost = conn.prepareStatement(delPost);
+            stmtGruppi = conn.prepareStatement(delGroups);
+            stmtGruppi2 = conn.prepareStatement(delGroups2);
+            stmtAmici = conn.prepareStatement(delFriends);
+            stmtUtenti = conn.prepareStatement(delUser);
+           
+            
+            
+            stmtPost.setInt(1, userID);
+            stmtPost.setInt(2, userID);
+            stmtGruppi.setInt(1, userID);
+            stmtGruppi.setInt(2, userID);
+            stmtGruppi2.setInt(1, userID);
+            stmtAmici.setInt(1, userID);
+            stmtAmici.setInt(2, userID);
+            stmtUtenti.setInt(1, userID);
+     
+            stmtPost.executeUpdate();
+            stmtGruppi.executeUpdate();
+            stmtGruppi2.executeUpdate();
+            stmtAmici.executeUpdate();
+            stmtUtenti.executeUpdate();
+            
+            conn.commit();
+            
+        } catch (SQLException e) {
+            if(conn!=null){
+                try {
+                    conn.rollback();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UtenteRegistratoFactory.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        } finally{
+            try {
+                if(stmtPost!=null)
+                    stmtPost.close();
+                if(stmtGruppi!=null)
+                    stmtGruppi.close();
+                if(stmtGruppi2!=null)
+                    stmtGruppi2.close();
+                if(stmtAmici!=null)
+                    stmtAmici.close();
+                if(stmtUtenti!=null)
+                    stmtUtenti.close();
+                if(conn!=null){
+                    conn.setAutoCommit(true);
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UtenteFactory.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }
 }
     

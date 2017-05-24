@@ -5,6 +5,11 @@
  */
 package amm.nerdbook.classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +34,7 @@ public class GruppoFactory {
     private GruppoFactory() {
         
         
-        
+       /* 
         UtenteRegistratoFactory utenteregistratoFactory =UtenteRegistratoFactory.getInstance();
         
         UtenteRegistrato utente0 = utenteregistratoFactory.getUtentiId(0);
@@ -54,11 +59,47 @@ public class GruppoFactory {
         listaGruppi.add(gruppo1);
         listaGruppi.add(gruppo2);
         
-
+        */
        
     }
 
-  
+     public Gruppo getGruppoById(int id) {
+         UtenteRegistratoFactory utenteFactory =UtenteRegistratoFactory.getInstance();
+        //GruppoFactory gruppoFactory =GruppoFactory.getInstance();
+        try {
+            Connection conn= DriverManager.getConnection(connectionString,"utente","0000");
+            String quesry =
+                    " select* from gruppo "
+                    +" join UtentePerGruppo on UtentePerGruppo.gruppo = gruppo.gruppo_id"
+                    +"where id=?";
+            PreparedStatement stmt= conn.prepareStatement(quesry);
+            stmt.setInt(1, id);
+            ResultSet res=stmt.executeQuery();
+            if(res.next()){
+                Gruppo current= new Gruppo();
+                current.setId(res.getInt("gruppo_id"));
+                current.setNome(res.getString("nome"));
+                UtenteRegistrato amministratore = utenteFactory.getUtentiId(res.getInt("amministratore"));
+                current.setDescrizione(res.getString("descrizione"));
+                current.setAmministratore(amministratore);
+
+                stmt.close();
+                conn.close();
+                return current;
+            }
+            stmt.close();
+            conn.close();
+        }
+        catch(SQLException e){
+            e.printStackTrace();  
+        }
+        /*for (Post post : this.listaPost) {
+            if (post.getId() == id) {
+                return post;
+            }
+        }*/
+        return null;
+    }
      public Gruppo getUtenteByName(int nomeGruppo)
     {
         for (Gruppo gruppo : this.listaGruppi) 

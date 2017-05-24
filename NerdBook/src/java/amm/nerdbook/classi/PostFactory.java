@@ -222,6 +222,30 @@ public class PostFactory {
         }
     }
      
+    public void deletePost(Post post){
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
+            
+            String query = 
+                    "delete" + "from post" + "where post_id =? ";
+            
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+           
+            stmt.setInt(1, post.getId());          
+         
+            stmt.executeUpdate();
+            
+            stmt.close();
+            conn.close();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
     private int postTypeFromEnum(Post.Type type){
      
         if(type == Post.Type.IMAGE){
@@ -233,5 +257,30 @@ public class PostFactory {
             
         }         
         return 0;
+    }
+    
+      public void deleteALlPost(UtenteRegistrato utente ){
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
+            
+            String query = 
+                    "delete" + "from post" + "where utente  =? ";
+            
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+           
+            stmt.setInt(1, utente.getId());          
+         
+            stmt.executeUpdate();
+            
+            stmt.close();
+            conn.close();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
     }
 }

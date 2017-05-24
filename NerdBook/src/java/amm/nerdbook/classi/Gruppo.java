@@ -19,6 +19,7 @@ public class Gruppo {
     private int id;
     private String nome;
     private String descrizione;
+    private UtenteRegistrato amministratore;
     
     public Gruppo(){   
         nome="";
@@ -90,4 +91,17 @@ public class Gruppo {
         this.descrizione = descrizione;
     }
     
+     /**
+     * @return the amministratore
+     */
+    public UtenteRegistrato getAmministratore() {
+        return amministratore;
+    }
+
+    /**
+     * @param amministratore the amministratore to set
+     */
+    public void setAmministratore(UtenteRegistrato amministratore) {
+        this.amministratore = amministratore;
+    }
 }
