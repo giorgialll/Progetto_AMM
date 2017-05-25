@@ -62,7 +62,42 @@ public class GruppoFactory {
         */
        
     }
+    public List<Gruppo> getlistaGruppi()
+    {
+        List<Gruppo> listaGruppi = new ArrayList<>();
+        
+        try {
+            Connection connessione = DriverManager.getConnection(connectionString, "utente", "0000");
+            
+            String query = "select * from gruppo";
+            
+            PreparedStatement frase = connessione.prepareStatement(query);
+            
+            ResultSet res = frase.executeQuery();
 
+            while (res.next()) {
+                Gruppo gruppoAttuale = new Gruppo();
+                
+                gruppoAttuale.setId(res.getInt("gruppo_id"));
+                gruppoAttuale.setNome(res.getString("nome"));
+                gruppoAttuale.setDescrizione(res.getString("descrizione"));
+                gruppoAttuale.setAmministratore(res.getInt("amministratore"));
+                
+                listaGruppi.add(gruppoAttuale);
+            }
+            
+
+            frase.close();
+            connessione.close();
+        } catch (SQLException e) {
+            System.out.println("Errore SQL in getPostList");
+            e.printStackTrace();
+        }
+        
+        return listaGruppi;
+    }
+    
+    
      public Gruppo getGruppoById(int id) {
          UtenteRegistratoFactory utenteFactory =UtenteRegistratoFactory.getInstance();
         //GruppoFactory gruppoFactory =GruppoFactory.getInstance();
@@ -71,7 +106,7 @@ public class GruppoFactory {
             String quesry =
                     " select* from gruppo "
                     +" join UtentePerGruppo on UtentePerGruppo.gruppo = gruppo.gruppo_id"
-                    +"where id=?";
+                    +"where gruppo_id=?";
             PreparedStatement stmt= conn.prepareStatement(quesry);
             stmt.setInt(1, id);
             ResultSet res=stmt.executeQuery();
@@ -81,7 +116,7 @@ public class GruppoFactory {
                 current.setNome(res.getString("nome"));
                 UtenteRegistrato amministratore = utenteFactory.getUtentiId(res.getInt("amministratore"));
                 current.setDescrizione(res.getString("descrizione"));
-                current.setAmministratore(amministratore);
+                current.setAmministratore(res.getInt("amministratore"));
 
                 stmt.close();
                 conn.close();
