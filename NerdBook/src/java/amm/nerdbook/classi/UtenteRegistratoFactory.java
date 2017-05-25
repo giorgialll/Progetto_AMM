@@ -295,10 +295,10 @@ public class UtenteRegistratoFactory {
         return null;
     }
     
-    public void updateProfilo(UtenteRegistrato utente){
+    public void aggiornamentoProfilo(UtenteRegistrato utente){
         try {
             // path, username, password
-            Connection conn = DriverManager.getConnection(connectionString, "utete", "0000");
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
                     "UPDATE utente SET nome = ?, cognome = ?, email = ?, "
@@ -329,96 +329,29 @@ public class UtenteRegistratoFactory {
     }    
     
     
-    public void deleteUser(int userID){
-        
-        PreparedStatement stmtGruppi2 = null;
-        PreparedStatement stmtAmici = null;
-        PreparedStatement stmtPost = null;
-        PreparedStatement stmtGruppi = null; 
-        PreparedStatement stmtUtenti = null;
-        
-        Connection conn = null;
-        
-        
+     public void eliminaUtente(UtenteRegistrato utente) {
+        try{
+            Connection connessione = DriverManager.getConnection(connectionString, "utente", "0000");
+            String query = "delete from utentepergruppo where utente = ? ";
+            PreparedStatement frase = connessione.prepareStatement(query);
+            frase.setInt(1, utente.getId());
+            frase.executeUpdate();
             
-        try {
+            query = "delete from utente where utente_Id = ?";
+            frase = connessione.prepareStatement(query);
+            frase.setInt(1, utente.getId());
+            frase.executeUpdate();
             
-            
-            
-            conn = DriverManager.getConnection(connectionString, "utente", "0000");
-            conn.setAutoCommit(false);
-            
-            String delPost = "DELETE FROM Post "
-                       + "WHERE utente = ? OR UtentePerGruppo.utente = ?";
-            String delGroups = "DELETE FROM UtentePerGruppo "
-                             + "WHERE UtentePerGruppo.utente = ? OR UtentePerGruppo.gruppo IN "
-                                + " (SELECT id FROM Gruppo "
-                                + " WHERE amministratore = ?)";
-            String delGroups2 = "DELETE FROM Gruppo "
-                             + "WHERE amministratore = ?";
-            String delFriends = "DELETE FROM amicizie "
-                              + "WHERE idUtente1 = ? OR idUtente2 = ?";
-            String delUser = "DELETE FROM Utente "
-                           + "WHERE utente_id = ?";
-
-           
-            
-            stmtPost = conn.prepareStatement(delPost);
-            stmtGruppi = conn.prepareStatement(delGroups);
-            stmtGruppi2 = conn.prepareStatement(delGroups2);
-            stmtAmici = conn.prepareStatement(delFriends);
-            stmtUtenti = conn.prepareStatement(delUser);
-           
-            
-            
-            stmtPost.setInt(1, userID);
-            stmtPost.setInt(2, userID);
-            stmtGruppi.setInt(1, userID);
-            stmtGruppi.setInt(2, userID);
-            stmtGruppi2.setInt(1, userID);
-            stmtAmici.setInt(1, userID);
-            stmtAmici.setInt(2, userID);
-            stmtUtenti.setInt(1, userID);
-     
-            stmtPost.executeUpdate();
-            stmtGruppi.executeUpdate();
-            stmtGruppi2.executeUpdate();
-            stmtAmici.executeUpdate();
-            stmtUtenti.executeUpdate();
-            
-            conn.commit();
-            
-        } catch (SQLException e) {
-            if(conn!=null){
-                try {
-                    conn.rollback();
-                } catch (SQLException ex) {
-                    Logger.getLogger(UtenteRegistratoFactory.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            
-        } finally{
-            try {
-                if(stmtPost!=null)
-                    stmtPost.close();
-                if(stmtGruppi!=null)
-                    stmtGruppi.close();
-                if(stmtGruppi2!=null)
-                    stmtGruppi2.close();
-                if(stmtAmici!=null)
-                    stmtAmici.close();
-                if(stmtUtenti!=null)
-                    stmtUtenti.close();
-                if(conn!=null){
-                    conn.setAutoCommit(true);
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(UtenteFactory.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            frase.close();
+            connessione.close();
+        } 
+        catch (SQLException e) {
+            System.out.println("Errore SQL su eliminaListaPost");
+            e.printStackTrace();
         }
-        
     }
+ 
+        
 }
     
   
