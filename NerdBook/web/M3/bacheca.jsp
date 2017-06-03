@@ -17,6 +17,8 @@
         <meta name="author" content="Giorgia Lallai">
         <meta name="keywords" content="Bacheca iscrizione gratis NerdBook gratutio cerca  amore nerd social amicizie amici profilo">
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/javascript.js"></script>
     </head>
     
     <body>
@@ -33,12 +35,34 @@
             <div id="logout" class="list">
                 <ul>
                     <li><a>${user.nome}</a> 
-                    <li><a id="log_out" href="Descrizione.html" >Logout</a> </li>
+                    <li><a id="log_out" href="descrizione.jsp" >Logout</a> </li>
                 </ul>
             </div>
         </div>
             
         <div class="Friends" >
+            
+            <div id="searchUtente">
+                <input id="searchField" type="text" placeholder="search..." value="">
+                <button id="cerca">CERCA</button>
+            </div>
+            
+            
+            <div id="usersList">
+                <c:forEach var="utente" items="${utenti}">
+                    <div class="user">
+                        <div class="profilepic">  
+                            <img alt="Immagine del profilo" src="${utente.urlProfilo}" > 
+                        </div>
+                        <div class="nameprofile">
+                            <strong>${utente.nome} ${utente.cognome}</strong>>
+                            <a href="index.html?user=${utente.id}">Link al profilo</a>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+            
+            
             <div class="list">
                 <h3>Amici </h3>
                 <ul>

@@ -37,7 +37,6 @@ public class UtenteRegistratoFactory {
     }
     
      
-    //Gestione DB
     
     public void setConnectionString(String s){
 	this.connectionString = s;
@@ -154,12 +153,7 @@ public class UtenteRegistratoFactory {
         return null;
     }
     
-    //Restituisco la lista di utenti
-    
-   /* public List getUsersList() {
-        return listaUtenti;
-    }*/
-    
+  
     public int getIdByUserAndPassword(String user, String password){
        /* for(UtenteRegistrato utente : this.listaUtenti){
             if(utente.getNome().equals(user) && utente.getPassword().equals(password)){
@@ -204,9 +198,9 @@ public class UtenteRegistratoFactory {
         
     }
     
-   public List getUsersList() {
+  /* public List getUsersList() {
         return listaUtenti;
-    }
+    }*/
    
    
    public int login(String nome,String password) {
@@ -350,7 +344,91 @@ public class UtenteRegistratoFactory {
             e.printStackTrace();
         }
     }
- 
+     
+    public List getUsersList() {
+        List<UtenteRegistrato> listaUtenti = new ArrayList<UtenteRegistrato>();
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
+            
+            String query = 
+                      "select * from utente";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                UtenteRegistrato current = new UtenteRegistrato();
+                
+                current.setId(res.getInt("utente_id"));
+                current.setNome(res.getString("name"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setUrlProfilo(res.getString("urldelProfilo"));
+                current.setFrase(res.getString("frasedipresentazione"));
+                current.setDataNascita(res.getString("datadinascita"));
+                
+                listaUtenti.add(current);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return listaUtenti;
+    }
+    
+    public List getUsersList(String name) {
+        List<UtenteRegistrato> listaGatti = new ArrayList<UtenteRegistrato>();
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
+            
+            String query = 
+                      "select * from utente where nome like ?";
+            
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            // Si associano i valori
+            stmt.setString(1, "%" + name + "%");
+            
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                UtenteRegistrato current = new UtenteRegistrato();
+                
+                current.setId(res.getInt("utente_id"));
+                current.setNome(res.getString("name"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setUrlProfilo(res.getString("urldelProfilo"));
+                current.setFrase(res.getString("frasedipresentazione"));
+                current.setDataNascita(res.getString("datadinascita"));
+                
+                listaUtenti.add(current);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return listaUtenti;
+    }
         
 }
     

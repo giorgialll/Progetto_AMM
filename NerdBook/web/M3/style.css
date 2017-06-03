@@ -167,7 +167,7 @@ input#url{
     font-family:  "Open Sans", Arial, sans-serif; 
 }
 
-/*titolo della descrizione */
+
 header{
     margin-right: 0px;
     padding-left: 0px;
@@ -267,6 +267,34 @@ label.newp{
 p{
     padding: 10px;
 }
+
+#searchUtente{
+    display: inline-block;
+    margin-left: 25px;
+}
+input#searchField{
+    width: 85%;
+    
+}
+
+#radio label{
+    margin-left: 5px;
+}
+#cerca{
+  display: inline-block;
+  text-align: center;
+  padding: 7px;
+  border:none;
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 12px;
+  background-color: #821682;
+  margin: 20px;
+  margin-left: 0px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  border-radius: 4px ;
+}
+
 .picture > img{
     margin-top: 15px;
     margin-left: 130px;
@@ -736,7 +764,7 @@ input:focus, textArea:focus{
         margin-top: 20px;
     }
     label,input,textArea{
-        font-size: 12px;
+        font-size: 10px;
     }
     
     

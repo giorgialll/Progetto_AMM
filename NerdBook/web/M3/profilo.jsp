@@ -31,16 +31,16 @@
                 <div class="list">
                     <h3>Amici </h3>
                     <ul>
-                        <li><a href="Bacheca.html" >Bob Dog</a></li>
-                        <li><a href="Bacheca.html" >Lisa Simposn</a></li>
-                        <li><a href="Bacheca.html">Dexter</a></li>
+                        <li><a href="bacheca.jsp" >Bob Dog</a></li>
+                        <li><a href="bacheca.jsp" >Lisa Simposn</a></li>
+                        <li><a href="bacheca.jsp">Dexter</a></li>
                     </ul>
 
                     <h3>Gruppi</h3>
 
                     <ul>
-                        <li><a href="Profilo.html">Nerd for nerd</a></li>
-                        <li><a href="Profilo.html">Travel</a></li>
+                        <li><a href="profilo.jsp">Nerd for nerd</a></li>
+                        <li><a href="profilo.jsp">Travel</a></li>
                     </ul>                
                 </div>
             </div> 
@@ -48,7 +48,7 @@
             <div id="Logout" class="list">
                 <ul>
                     <li><a>Peppa</a> 
-                    <li><a id="Log_out" href="Descrizione.html">Logout</a> </li>
+                    <li><a id="Log_out" href="descrizione.jsp">Logout</a> </li>
                 </ul>
             </div>
         </div>
