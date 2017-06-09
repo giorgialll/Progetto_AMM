@@ -446,10 +446,7 @@ nav li.active{
     margin-right: 90%;
     display: block;
     width: 47%;
-    /*margin-left: 30%;*/
-    /*margin-right: 50%;*/
     margin-top: 25px;
-    /*border: 3px solid #000000;*/
 }
 
 
@@ -605,7 +602,6 @@ input:focus, textArea:focus{
     #navblock {
         position: relative;
         width: 55%;
-        height: 24%;
         margin-left:20%;
         margin-right: 5%;
     }
@@ -632,12 +628,13 @@ input:focus, textArea:focus{
         float: left;
         position: relative;
         width: 85%;
-        height: 24%;
-        margin: 0px;
+        margin-top: 0px;
+        margin-left: 5%;
+        margin-right: 5%;
     }
     
     #accessForm label{
-        margin-left: 23%;
+        margin-left: 20px;
         font-size: 17px;
     }
     #NB{
@@ -655,8 +652,8 @@ input:focus, textArea:focus{
         float: left;
         position: relative;
         width: 85%;
-        height: 20%;
-        margin: 0px;
+        margin-left: 5%;
+        margin-right: 5%;
         margin-top: 25px;
     }
     
@@ -838,14 +835,13 @@ input:focus, textArea:focus{
     
     #navblock {
         position: relative;
-        width: 50%;
-        height: 24%;
+        width: 49%;
         margin-left:23%;
         margin-right: 5%;
     }
     
     #navblock h1{
-        margin-left: 0px;
+        margin-left: 38px;
         display: block;
         text-align: left;
         position: relative;
@@ -865,7 +861,6 @@ input:focus, textArea:focus{
         float: left;
         position: relative;
         width: 80%;
-        height: 24%;
         margin-top: 10px;
         margin-left: 0px;
         margin-right: 0px;
@@ -875,6 +870,7 @@ input:focus, textArea:focus{
     #accessForm label{
         text-align: left;
         font-size: 22px;
+        margin-left: 5px;
     }
     
     

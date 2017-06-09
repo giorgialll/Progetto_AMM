@@ -49,7 +49,7 @@
             
             
             <div id="usersList">
-                <c:forEach var="utente" items="${utenti}">
+                <c:forEach var="utente" items="${listaUtenti}">
                     <div class="user">
                         <div class="profilepic">  
                             <img alt="Immagine del profilo" src="${utente.urlProfilo}" > 
@@ -89,6 +89,19 @@
                     <c:when test="${empty newpost}">
                     <div id="nuovopost">
                         <form action="servlet.java" method="post"  > 
+                            <input type="hidden" name="bachecaOgruppo" value="${bachecaOgruppo}"/>  
+                            <c:choose>
+                                <c:when test="${bachecaOgruppo == 'user'}">
+                                    <input type="hidden" name="dest" value="${user.id}"/>                        
+                                </c:when>
+
+                                <c:when test="${bachecaOgruppo == 'gruppo'}">
+                                    <input type="hidden" name="dest" value="${gruppo.id}"/>                        
+                                </c:when>
+                            </c:choose>
+                                    
+                            <input type="hidden" name="namegr" value="${namegr}"/>
+                            
                             <textarea name="newpost" id="newpost" class="post" >Aggiungi qui il tuo post...</textarea>
 
                             <div id="radio">
@@ -127,11 +140,17 @@
             </div>
             <c:forEach var="post" items="${posts}">
                 <div class="post">
+                    <c:if test="${bachecaOgruppo == 'gruppo'}">
+                        
+                        <strong>${gruppo.nome}</stong>
+                        
+                    </c:if>
+                        
                     <div class="profilepic">
-                        <img alt="Immagine del profilo" src="${user.urlProfilo}" > 
+                        <img alt="Immagine del profilo" src="${post.user.urlProfilo}" > 
                     </div> 
                     <div class="nameprofile">
-                        <strong>${user.nome} ${user.cognome}</strong
+                        <strong>${post.user.nome} ${user.cognome}</strong
                     </div>
                     <c:choose>
                         <c:when test="${post.postType == 'IMAGE'}">

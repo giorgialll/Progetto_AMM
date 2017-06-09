@@ -22,7 +22,7 @@
             <div class="header">
                 <header>
                     <div id="title">
-                        <h1>Nerd Book</h1>
+                        <h1>NerdBook</h1>
                     </div>
                 </header>
 

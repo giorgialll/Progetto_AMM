@@ -101,7 +101,7 @@ public class UtenteRegistrato {
      * @return la data di nascita
      */
     public String getDataNascita() {
-        return password;
+        return datanascita;
     }
 
     /**
@@ -115,7 +115,7 @@ public class UtenteRegistrato {
      * @return la frase di presetazione
      */
     public String getFrase() {
-        return password;
+        return frase;
     }
 
     /**

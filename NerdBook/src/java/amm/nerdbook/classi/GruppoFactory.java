@@ -62,39 +62,45 @@ public class GruppoFactory {
         */
        
     }
-    public List<Gruppo> getlistaGruppi()
-    {
-        List<Gruppo> listaGruppi = new ArrayList<>();
+    
+    
+    public List<Gruppo> getListaGruppiperutente(int user){
+         try {
+            
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
+            
+            String query = "SELECT * FROM gruppo "
+                         + "JOIN utentepergruppo ON gruppo.gruppo_id = utentepergruppo.gruppo "
+                         + "WHERE utente = ?";
+            
+         
+            PreparedStatement stmt = conn.prepareStatement(query);
         
-        try {
-            Connection connessione = DriverManager.getConnection(connectionString, "utente", "0000");
-            
-            String query = "select * from gruppo";
-            
-            PreparedStatement frase = connessione.prepareStatement(query);
-            
-            ResultSet res = frase.executeQuery();
+            stmt.setInt(1, user);
 
+            ResultSet res = stmt.executeQuery();
+            List<Gruppo> ListaGruppi = new ArrayList();
+         
             while (res.next()) {
-                Gruppo gruppoAttuale = new Gruppo();
+                Gruppo gruppoAttuale = new Gruppo();  
                 
                 gruppoAttuale.setId(res.getInt("gruppo_id"));
                 gruppoAttuale.setNome(res.getString("nome"));
                 gruppoAttuale.setDescrizione(res.getString("descrizione"));
                 gruppoAttuale.setAmministratore(res.getInt("amministratore"));
                 
-                listaGruppi.add(gruppoAttuale);
+                ListaGruppi.add(gruppoAttuale);
             }
             
-
-            frase.close();
-            connessione.close();
+             
+            stmt.close();
+            conn.close();
+            return ListaGruppi;
+            
         } catch (SQLException e) {
-            System.out.println("Errore SQL in getPostList");
             e.printStackTrace();
         }
-        
-        return listaGruppi;
+        return null;                 
     }
     
     

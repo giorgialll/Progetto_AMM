@@ -84,8 +84,8 @@ public class PostFactory {
             Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
-                      "select * from post "
-                    + "join tipourl on post.tipo = tipourl.tipourl_id "
+                      "select * from Post "
+                    + "join tipourl on Post.tipo = TipoUrl.tipourl_id "
                     + "where post_id = ?";
             
             // Prepared Statement
@@ -142,9 +142,9 @@ public class PostFactory {
             Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
-                      "select * from post "
-                    + "join posttype on post.tipo = tipourl.tipourl_id "
-                    + "where author = ?";
+                      "select * from Post "
+                    + "join posttype on Post.tipo = TipoUrl.tipourl_id "
+                    + "where utente = ?";
             
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -166,7 +166,10 @@ public class PostFactory {
                 current.setContenuto_testo(res.getString("contenuto_testo"));
                 
                 //imposto il tipo del post
-                current.setPostType(this.postTypeFromString(res.getString("posttype_name")));
+                current.setPostType(this.postTypeFromString(res.getString("tipo")));
+                current.setContenuto_testo(res.getString("url"));
+                current.setId(res.getInt("utente"));
+                current.setId(res.getInt("gruppo"));
 
                 //imposto l'autore del post
                 current.setUser(user);
@@ -183,7 +186,55 @@ public class PostFactory {
         return listaPost;
     }
     
-    
+    public List getPostList(Gruppo group) {
+        List<Post> listaPost = new ArrayList<Post>();
+        
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
+            
+            String query = 
+                      "SELECT Post*, tipourl.type FROM Post "
+                    + "JOIN tipourl ON Post.tipo = tipourl.tipourl_id "
+                    + "WHERE gruppo = ? "
+                    + "ORDER BY Post.post_id DESC";
+                    
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+           
+            stmt.setInt(1, group.getId());
+            
+            // Esecuzione query
+            ResultSet res;
+            
+            res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                 Post current = new Post();
+                //imposto id del post
+                current.setId(res.getInt("post_id"));
+                
+                //impost il contenuto del post
+                current.setContenuto_testo(res.getString("contenuto_testo"));
+                
+                //imposto il tipo del post
+                current.setPostType(this.postTypeFromString(res.getString("tipo")));
+                current.setContenuto_testo(res.getString("url"));
+                current.setId(res.getInt("utente"));
+                current.setId(res.getInt("gruppo"));
+                
+                listaPost.add(current);
+            }
+            
+            stmt.close();
+            conn.close();
+            return listaPost;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     
      private Post.Type postTypeFromString(String type){
         
@@ -246,6 +297,8 @@ public class PostFactory {
             e.printStackTrace();
         }
     }
+    
+    
     private int postTypeFromEnum(Post.Type type){
      
         if(type == Post.Type.IMAGE){
@@ -259,7 +312,7 @@ public class PostFactory {
         return 0;
     }
     
-      public void deleteALlPost(UtenteRegistrato utente ){
+    public void deleteALlPost(UtenteRegistrato utente ){
         try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");

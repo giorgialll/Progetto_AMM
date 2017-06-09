@@ -25,18 +25,7 @@ public class Login extends HttpServlet {
     private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
 
     
-    @Override
-   public void init(){
-       String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
-       try {
-           Class.forName(JDBC_DRIVER);
-       } catch (ClassNotFoundException ex) {
-           Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       UtenteRegistratoFactory.getInstance().setConnectionString(dbConnection);
-       GruppoFactory.getInstance().setConnectionString(dbConnection);
-       PostFactory.getInstance().setConnectionString(dbConnection);
-   }
+    
    
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -44,7 +33,7 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         //Apertura della sessione
-        /*Creazione della sessione; se esiste otteniamo la sessione ottenuta in precedeza. Se mettiamo (false) la seessione non viee creata*/
+ 
         HttpSession session = request.getSession();
         
         //Se è impostato il parametro GET logout, distrugge la sessione
@@ -52,24 +41,24 @@ public class Login extends HttpServlet {
         if(request.getParameter("logout")!=null)
         {
             session.invalidate();
-            request.getRequestDispatcher("M3/loginForm.jsp").forward(request, response);
+            request.getRequestDispatcher("M3/login.jsp").forward(request, response);
             return;
         }
         
         //Se esiste un attributo di sessione loggedIn e questo vale true
         //(Utente già loggato)
-        /*Se esiste un attributo di sessione di che si chiama loggedIn controllo se è true; indica che l'utente è logato. */
+       
     
         
-        if (session.getAttribute("loggedIn") != null &&
-            session.getAttribute("loggedIn").equals(true)) {
+        if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
 
-            request.getRequestDispatcher("Bacheca").forward(request, response); /* se + logato lo mando nella bacheca*/
-            return; /*blocca la servlet del login */
+            request.getRequestDispatcher("Bacheca").forward(request, response); 
+            return; 
         
-        //Se l'utente non è loggato...
+       
         } 
-        else {
+        else 
+        {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
         
@@ -83,33 +72,41 @@ public class Login extends HttpServlet {
                 /*controlo sull'id ottenuto */
                 if(loggedUserID!=-1)
                 {
-                    session.setAttribute("loggedIn", true); /* l'id è valido quindi l'id è true */
-                    session.setAttribute("loggedUserID", loggedUserID); /*attributo di sessione */
-                    /* In questo modo ho  memorizzato in sessione le variabii che mi interessano */
-                    request.getRequestDispatcher("Bacheca").forward(request, response);  /* Dopo la memorizzazione rindirizzo tutto alla pagin bacheca */
-                    return;
-                } else { //altrimenti se la coppia user/pass non è valida (id==-1)
-                    
-                    //ritorno al form del login informandolo che i dati non sono validi
-                    request.setAttribute("invalidData", true);/* attributo di richiesta invalidata a true*/
-                    request.getRequestDispatcher("M3/loginForm.jsp").forward(request, response); /* richiamo il loginform e gli passo invaliData */
+                    session.setAttribute("loggedIn", true); 
+                    session.setAttribute("loggedUserID", loggedUserID); 
+            
+                    request.getRequestDispatcher("Bacheca").forward(request, response);  
+           
                     return;
                 }
+                else{
+                    request.setAttribute("invalidData", true);
+                    request.getRequestDispatcher("M3/login.jsp").forward(request, response);
+                    return;
+                }
+                 
                 
                 
             }
-        }
-        
-        /*
-          Se non si verifica nessuno degli altri casi, 
-          tentativo di accesso diretto alla servlet Login -> reindirizzo verso 
-          il form di login.
-        */
-        
-        /* l'utente prova ad accedere alla pagina login dalla URL */
-        request.getRequestDispatcher("M3/loginForm.jsp").forward(request, response);
+            request.getRequestDispatcher("M3/login.jsp").forward(request, response);
+        }        
     }
-
+    
+    @Override
+    public void init(){
+       String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+       try {
+           Class.forName(JDBC_DRIVER);
+       } catch (ClassNotFoundException ex) {
+           Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       UtenteRegistratoFactory.getInstance().setConnectionString(dbConnection);
+       GruppoFactory.getInstance().setConnectionString(dbConnection);
+       PostFactory.getInstance().setConnectionString(dbConnection);
+    }
+    
+    
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -148,5 +145,7 @@ public class Login extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    
 
 }

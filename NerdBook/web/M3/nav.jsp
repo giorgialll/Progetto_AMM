@@ -29,9 +29,9 @@
 
                     <nav id="link" class="barra" >         
                         <ul>
-                            <li><a href="Descrizione.html">Home</a></li>
-                            <li><a href="Profilo.html">Profilo</a></li>
-                            <li><a class ="pg_attuale" href="Bacheca.html">Bacheca </a></li>
+                            <li><a href="descrizione.jsp">Home</a></li>
+                            <li><a href="profilo.jsp">Profilo</a></li>
+                            <li><a class ="pg_attuale" href="bacheca.jsp">Bacheca </a></li>
                         </ul>     
                     </nav>                    
 
@@ -41,9 +41,9 @@
                     
                         <nav class="barra" >
                             <ul>
-                                <li><a href="Descrizione.html">Home</a></li>
-                                <li><a class="pg_attuale" href="Profilo.html">Profilo</a></li>
-                                <li><a href="Bacheca.html">Bacheca </a></li>
+                                <li><a href="descrizione.jsp">Home</a></li>
+                                <li><a class="pg_attuale" href="profilo.jsp">Profilo</a></li>
+                                <li><a href="bacheca.jsp">Bacheca </a></li>
 
                             </ul>
                         </nav>

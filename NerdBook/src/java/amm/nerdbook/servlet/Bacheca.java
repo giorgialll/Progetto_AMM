@@ -2,6 +2,8 @@ package amm.nerdbook.servlet;
 
 import amm.nerdbook.classi.Post;
 import amm.nerdbook.classi.PostFactory;
+import amm.nerdbook.classi.Gruppo;
+import amm.nerdbook.classi.GruppoFactory;
 import amm.nerdbook.classi.UtenteRegistrato;
 import amm.nerdbook.classi.UtenteRegistratoFactory;
 import java.io.IOException;
@@ -37,9 +39,7 @@ public class Bacheca extends HttpServlet {
         
         HttpSession sessione = request.getSession(false);
         
-         if(sessione!=null && 
-           sessione.getAttribute("loggedIn")!=null &&
-           sessione.getAttribute("loggedIn").equals(true)){
+         if(sessione!=null && sessione.getAttribute("loggedIn")!=null && sessione.getAttribute("loggedIn").equals(true)){
             
              
             if(request.getParameter("thereIsPost")!=null)
@@ -86,16 +86,20 @@ public class Bacheca extends HttpServlet {
          
         if(sessione!=null && sessione.getAttribute("loggedIn")!=null && sessione.getAttribute("loggedIn").equals(true)){
            
-            String paramUser = request.getParameter("user");
+           /* String paramUser = request.getParameter("user");
             int userID;
+            
             if(paramUser != null){
                 userID = Integer.parseInt(paramUser);
-            } else {
+            } 
+            else
+            {
                 userID = (Integer)sessione.getAttribute("loggedUserID");
 
             }
 
             UtenteRegistrato user = UtenteRegistratoFactory.getInstance().getUtentiId(userID);
+            
             if(user != null){
                 request.setAttribute("user", user);
                 
@@ -103,12 +107,66 @@ public class Bacheca extends HttpServlet {
                 request.setAttribute("posts", posts);
 
                 List<UtenteRegistrato> listaUtenti = UtenteRegistratoFactory.getInstance().getUsersList();
-                request.setAttribute("users",listaUtenti);
+                request.setAttribute("listaUtenti",listaUtenti);
                 
                 request.getRequestDispatcher("M3/bacheca.jsp").forward(request, response);
             } else {
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }
+        }*/
+         int id_utente_log = (Integer)sessione.getAttribute("id_utente_log");
+            
+            List<Post> posts; //Lista dei post
+            UtenteRegistrato utente_log = UtenteRegistratoFactory.getInstance().getUtentiId(id_utente_log);
+ 
+            String paramUser = request.getParameter("user");
+            String paramGroup = request.getParameter("group");
+            
+            int id_utente = -1;
+            int id_gruppo = -1;
+            
+            
+            if(paramGroup != null)
+                id_gruppo = Integer.parseInt(paramGroup);
+          
+            else{
+                
+                if(paramUser != null)
+                    id_utente = Integer.parseInt(paramUser);
+                
+                
+                else
+                    id_utente = id_utente_log;
+            }
+
+            UtenteRegistrato user = UtenteRegistratoFactory.getInstance().getUtentiId(id_utente);
+            Gruppo gruppo = GruppoFactory.getInstance().getGruppoById(id_gruppo);
+            
+            if(gruppo != null ){ 
+                
+                posts = PostFactory.getInstance().getPostList(gruppo);
+                request.setAttribute("gruppo", gruppo);
+                request.setAttribute("bachecaOgruppo","gruppo");
+                request.setAttribute("namegr",gruppo.getNome());
+            }
+            else{
+             
+                if(user == null) 
+                    user = utente_log;
+                
+                
+                posts = PostFactory.getInstance().getPostList(user);
+                request.setAttribute("user", user);
+                request.setAttribute("bachecaOgruppo","user");
+                request.setAttribute("namegr",user.getNome());
+            }
+
+            request.setAttribute("posts", posts);
+            List<UtenteRegistrato> amici = UtenteRegistratoFactory.getInstance().getFriendList(id_utente_log);
+            request.setAttribute("friends", amici);
+            List<Gruppo> gruppi = GruppoFactory.getInstance().getListaGruppiperutente(id_utente_log);
+            request.setAttribute("groups", gruppi);
+            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
         }
         else{
             try (PrintWriter out = response.getWriter()) {

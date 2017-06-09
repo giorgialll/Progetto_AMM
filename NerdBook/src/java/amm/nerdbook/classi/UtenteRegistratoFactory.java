@@ -103,7 +103,7 @@ public class UtenteRegistratoFactory {
         listaUtenti.add(utente4);*/        
        
     }
-
+    
     public UtenteRegistrato getUtentiId(int id) {
       /*  for (UtenteRegistrato utente : this.listaUtenti) {
             if (utente.getId() == id) {
@@ -116,7 +116,7 @@ public class UtenteRegistratoFactory {
             Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
-                      "select * from utente "
+                      "select * from Utente "
                     + "where utente_id = ?";
             
             // Prepared Statement
@@ -135,7 +135,7 @@ public class UtenteRegistratoFactory {
                 current.setNome(res.getString("name"));
                 current.setCognome(res.getString("cognome"));
                 current.setEmail(res.getString("email"));
-                current.setUrlProfilo(res.getString("urlFotoProfilo"));
+                current.setUrlProfilo(res.getString("urldelProfilo"));
                 current.setDataNascita(res.getString("datadinascita"));
                 current.setFrase(res.getString("frasedipresentazione"));
                 current.setPassword(res.getString("password"));                
@@ -167,7 +167,7 @@ public class UtenteRegistratoFactory {
             Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
-                      "select utente_id from utente "
+                      "select utente_id from Utente "
                     + "where name = ? and password = ?";
             
             // Prepared Statement
@@ -198,15 +198,13 @@ public class UtenteRegistratoFactory {
         
     }
     
-  /* public List getUsersList() {
-        return listaUtenti;
-    }*/
-   
-   
+ 
+    
+    
    public int login(String nome,String password) {
         try {
             // path, username, password
-            Connection conn = DriverManager.getConnection(connectionString, "Nerdbook", "password");
+            Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
                       "SELECT utente_id FROM Utente "
@@ -275,7 +273,7 @@ public class UtenteRegistratoFactory {
                 current.setEmail(res.getString("email"));
                 current.setUrlProfilo(res.getString("urldelprofilo"));
                 current.setFrase(res.getString("frasedipresentazione"));
-                current.setDataNascita(res.getString("datadiNascita"));
+                current.setDataNascita(res.getString("datadinascita"));
                 amici.add(current);
             }
             
@@ -295,8 +293,8 @@ public class UtenteRegistratoFactory {
             Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
-                    "UPDATE utente SET nome = ?, cognome = ?, email = ?, "
-                    + "password = ?, frasedipresentazione = ?, urldelprofilo = ?, datadiNascita = ? "
+                    "UPDATE Utente SET nome = ?, cognome = ?, email = ?, "
+                    + "password = ?, frasedipresentazione = ?, urldelprofilo = ?, datadinascita = ? "
                     + "WHERE utente_id = ?";
             
            
@@ -326,12 +324,12 @@ public class UtenteRegistratoFactory {
      public void eliminaUtente(UtenteRegistrato utente) {
         try{
             Connection connessione = DriverManager.getConnection(connectionString, "utente", "0000");
-            String query = "delete from utentepergruppo where utente = ? ";
+            String query = "delete from UtentePerGruppo where utente = ? ";
             PreparedStatement frase = connessione.prepareStatement(query);
             frase.setInt(1, utente.getId());
             frase.executeUpdate();
             
-            query = "delete from utente where utente_Id = ?";
+            query = "delete from Utente where utente_id = ?";
             frase = connessione.prepareStatement(query);
             frase.setInt(1, utente.getId());
             frase.executeUpdate();
@@ -353,7 +351,7 @@ public class UtenteRegistratoFactory {
             Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
-                      "select * from utente";
+                      "select * from Utente";
             
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -370,7 +368,7 @@ public class UtenteRegistratoFactory {
                 current.setCognome(res.getString("cognome"));
                 current.setPassword(res.getString("password"));
                 current.setEmail(res.getString("email"));
-                current.setUrlProfilo(res.getString("urldelProfilo"));
+                current.setUrlProfilo(res.getString("urldelprofilo"));
                 current.setFrase(res.getString("frasedipresentazione"));
                 current.setDataNascita(res.getString("datadinascita"));
                 
@@ -386,6 +384,8 @@ public class UtenteRegistratoFactory {
         return listaUtenti;
     }
     
+    
+    
     public List getUsersList(String name) {
         List<UtenteRegistrato> listaGatti = new ArrayList<UtenteRegistrato>();
         
@@ -394,7 +394,7 @@ public class UtenteRegistratoFactory {
             Connection conn = DriverManager.getConnection(connectionString, "utente", "0000");
             
             String query = 
-                      "select * from utente where nome like ?";
+                      "select * from Utente where nome like ?";
             
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -414,7 +414,7 @@ public class UtenteRegistratoFactory {
                 current.setCognome(res.getString("cognome"));
                 current.setPassword(res.getString("password"));
                 current.setEmail(res.getString("email"));
-                current.setUrlProfilo(res.getString("urldelProfilo"));
+                current.setUrlProfilo(res.getString("urldelprofilo"));
                 current.setFrase(res.getString("frasedipresentazione"));
                 current.setDataNascita(res.getString("datadinascita"));
                 
